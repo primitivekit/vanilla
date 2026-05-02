@@ -1,0 +1,122 @@
+/* Button Base Styles */
+.pk-button {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap, 0.5rem);
+  
+  /* Sizing */
+  padding: var(--button-padding-y, 0.5rem) var(--button-padding-x, 1rem);
+  min-height: var(--button-min-height, 2.5rem);
+  min-width: var(--button-min-width, auto);
+  
+  /* Typography */
+  font-family: var(--button-font-family, inherit);
+  font-size: var(--button-font-size, 1rem);
+  font-weight: var(--button-font-weight, 500);
+  line-height: var(--button-line-height, 1.5);
+  text-align: center;
+  text-decoration: none;
+  
+  /* Visual */
+  background-color: var(--button-background, #007bff);
+  color: var(--button-color, #ffffff);
+  border: var(--button-border-width, 1px) solid var(--button-border-color, transparent);
+  border-radius: var(--button-border-radius, 0.375rem);
+  box-shadow: var(--button-box-shadow, none);
+  
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition: var(--button-transition, all 0.2s ease-in-out);
+  
+  /* Accessibility */
+  outline: none;
+}
+
+.pk-button:hover:not(:disabled) {
+  background-color: var(--button-hover-background, #0056b3);
+  color: var(--button-hover-color, #ffffff);
+  border-color: var(--button-hover-border-color, transparent);
+  box-shadow: var(--button-hover-box-shadow, 0 2px 4px rgba(0, 0, 0, 0.1));
+  transform: var(--button-hover-transform, translateY(-1px));
+}
+
+.pk-button:active:not(:disabled) {
+  background-color: var(--button-active-background, #004085);
+  color: var(--button-active-color, #ffffff);
+  transform: var(--button-active-transform, translateY(0));
+}
+
+.pk-button:focus-visible {
+  outline: var(--button-focus-outline-width, 2px) solid var(--button-focus-outline-color, #007bff);
+  outline-offset: var(--button-focus-outline-offset, 2px);
+}
+
+.pk-button:disabled {
+  opacity: var(--button-disabled-opacity, 0.5);
+  cursor: not-allowed;
+}
+
+/* Size Variants */
+.pk-button--small {
+  padding: var(--button-small-padding-y, 0.25rem) var(--button-small-padding-x, 0.75rem);
+  font-size: var(--button-small-font-size, 0.875rem);
+  min-height: var(--button-small-min-height, 2rem);
+}
+
+.pk-button--medium {
+  padding: var(--button-medium-padding-y, 0.5rem) var(--button-medium-padding-x, 1rem);
+  font-size: var(--button-medium-font-size, 1rem);
+  min-height: var(--button-medium-min-height, 2.5rem);
+}
+
+.pk-button--large {
+  padding: var(--button-large-padding-y, 0.75rem) var(--button-large-padding-x, 1.5rem);
+  font-size: var(--button-large-font-size, 1.125rem);
+  min-height: var(--button-large-min-height, 3rem);
+}
+
+/* Color Variants */
+.pk-button--primary {
+  --button-background: var(--button-primary-background, #007bff);
+  --button-color: var(--button-primary-color, #ffffff);
+  --button-hover-background: var(--button-primary-hover-background, #0056b3);
+  --button-active-background: var(--button-primary-active-background, #004085);
+}
+
+.pk-button--secondary {
+  --button-background: var(--button-secondary-background, #6c757d);
+  --button-color: var(--button-secondary-color, #ffffff);
+  --button-hover-background: var(--button-secondary-hover-background, #545b62);
+  --button-active-background: var(--button-secondary-active-background, #3d4349);
+}
+
+.pk-button--success {
+  --button-background: var(--button-success-background, #28a745);
+  --button-color: var(--button-success-color, #ffffff);
+  --button-hover-background: var(--button-success-hover-background, #1e7e34);
+  --button-active-background: var(--button-success-active-background, #155724);
+}
+
+.pk-button--danger {
+  --button-background: var(--button-danger-background, #dc3545);
+  --button-color: var(--button-danger-color, #ffffff);
+  --button-hover-background: var(--button-danger-hover-background, #c82333);
+  --button-active-background: var(--button-danger-active-background, #bd2130);
+}
+
+.pk-button--warning {
+  --button-background: var(--button-warning-background, #ffc107);
+  --button-color: var(--button-warning-color, #212529);
+  --button-hover-background: var(--button-warning-hover-background, #e0a800);
+  --button-active-background: var(--button-warning-active-background, #d39e00);
+}
+
+.pk-button--info {
+  --button-background: var(--button-info-background, #17a2b8);
+  --button-color: var(--button-info-color, #ffffff);
+  --button-hover-background: var(--button-info-hover-background, #117a8b);
+  --button-active-background: var(--button-info-active-background, #0f6674);
+}
