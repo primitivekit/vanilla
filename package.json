@@ -1,6 +1,6 @@
 {
   "name": "@primitivekit/vanilla",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Primitive vanilla JavaScript components with zero hardcoded values. Fully customizable via CSS variables.",
   "type": "module",
   "main": "dist/index.js",
