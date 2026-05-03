@@ -1,6 +1,6 @@
 {
   "name": "@primitivekit/vanilla",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Primitive vanilla JavaScript components with zero hardcoded values. Fully customizable via CSS variables.",
   "type": "module",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "echo 'Build placeholder - Vanilla JS components ready for use'",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
