@@ -1,0 +1,66 @@
+/* PrimitiveKit Stack Component */
+
+.stack {
+  --stack-gap: 1rem;
+  --stack-direction: column;
+  --stack-align-items: stretch;
+  --stack-justify-content: flex-start;
+  
+  display: flex;
+  flex-direction: var(--stack-direction);
+  align-items: var(--stack-align-items);
+  justify-content: var(--stack-justify-content);
+  gap: var(--stack-gap);
+}
+
+.stack--horizontal {
+  --stack-direction: row;
+}
+
+.stack--vertical {
+  --stack-direction: column;
+}
+
+.stack--align-start {
+  --stack-align-items: flex-start;
+}
+
+.stack--align-center {
+  --stack-align-items: center;
+}
+
+.stack--align-end {
+  --stack-align-items: flex-end;
+}
+
+.stack--align-stretch {
+  --stack-align-items: stretch;
+}
+
+.stack--justify-start {
+  --stack-justify-content: flex-start;
+}
+
+.stack--justify-center {
+  --stack-justify-content: center;
+}
+
+.stack--justify-end {
+  --stack-justify-content: flex-end;
+}
+
+.stack--justify-between {
+  --stack-justify-content: space-between;
+}
+
+.stack--justify-around {
+  --stack-justify-content: space-around;
+}
+
+.stack--justify-evenly {
+  --stack-justify-content: space-evenly;
+}
+
+.stack--wrap {
+  flex-wrap: wrap;
+}

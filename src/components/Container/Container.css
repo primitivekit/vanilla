@@ -1,0 +1,47 @@
+/* PrimitiveKit Container Component */
+
+.container {
+  --container-max-width: 1024px;
+  --container-padding-x: 1rem;
+  --container-padding-y: 0;
+  
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-x);
+  padding-right: var(--container-padding-x);
+  padding-top: var(--container-padding-y);
+  padding-bottom: var(--container-padding-y);
+}
+
+.container--sm {
+  --container-max-width: 640px;
+}
+
+.container--md {
+  --container-max-width: 768px;
+}
+
+.container--lg {
+  --container-max-width: 1024px;
+}
+
+.container--xl {
+  --container-max-width: 1280px;
+}
+
+.container--2xl {
+  --container-max-width: 1536px;
+}
+
+.container--full {
+  --container-max-width: 100%;
+}
+
+.container--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

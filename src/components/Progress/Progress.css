@@ -1,0 +1,80 @@
+/* PrimitiveKit Progress Component */
+
+.progress-wrapper {
+  width: 100%;
+}
+
+.progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.progress__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(55, 65, 81, 1);
+}
+
+.progress__value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(107, 114, 128, 1);
+}
+
+.progress {
+  --progress-height: 0.5rem;
+  --progress-bg-color: rgba(229, 231, 235, 1);
+  --progress-fill-color: rgba(59, 130, 246, 1);
+  --progress-border-radius: 9999px;
+  
+  width: 100%;
+  height: var(--progress-height);
+  background-color: var(--progress-bg-color);
+  border-radius: var(--progress-border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress__fill {
+  height: 100%;
+  background-color: var(--progress-fill-color);
+  border-radius: var(--progress-border-radius);
+  transition: width 0.3s ease-in-out;
+}
+
+.progress--small {
+  --progress-height: 0.375rem;
+}
+
+.progress--large {
+  --progress-height: 0.75rem;
+}
+
+.progress--indeterminate .progress__fill {
+  width: 40%;
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(250%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress__fill {
+    transition-duration: 0.01ms;
+  }
+  
+  .progress--indeterminate .progress__fill {
+    animation-duration: 3s;
+  }
+}

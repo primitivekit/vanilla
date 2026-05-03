@@ -1,0 +1,16 @@
+.space {
+  --space-gap: 0.5rem;
+  display: flex;
+  gap: var(--space-gap);
+}
+
+.space--horizontal { flex-direction: row; }
+.space--vertical { flex-direction: column; }
+.space--small { --space-gap: 0.25rem; }
+.space--medium { --space-gap: 0.5rem; }
+.space--large { --space-gap: 1rem; }
+.space--align-start { align-items: flex-start; }
+.space--align-end { align-items: flex-end; }
+.space--align-center { align-items: center; }
+.space--align-baseline { align-items: baseline; }
+.space--wrap { flex-wrap: wrap; }

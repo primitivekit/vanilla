@@ -1,0 +1,68 @@
+/* PrimitiveKit Card Component */
+
+.card {
+  --card-bg-color: rgba(255, 255, 255, 1);
+  --card-border-width: 1px;
+  --card-border-color: rgba(229, 231, 235, 1);
+  --card-border-radius: 0.5rem;
+  --card-padding: 1.5rem;
+  --card-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-box-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --card-transition-duration: 0.2s;
+  
+  background-color: var(--card-bg-color);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  transition: box-shadow var(--card-transition-duration) ease-in-out, transform var(--card-transition-duration) ease-in-out;
+}
+
+.card--elevated {
+  box-shadow: var(--card-box-shadow);
+  border: none;
+}
+
+.card--outlined {
+  border: var(--card-border-width) solid var(--card-border-color);
+  box-shadow: none;
+}
+
+.card--filled {
+  background-color: rgba(249, 250, 251, 1);
+  border: none;
+  box-shadow: none;
+}
+
+.card--hoverable:hover {
+  box-shadow: var(--card-box-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.card--clickable:hover {
+  box-shadow: var(--card-box-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card--clickable:active {
+  transform: translateY(0);
+}
+
+.card--clickable:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 1);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    --card-transition-duration: 0.01ms;
+  }
+  
+  .card--hoverable:hover,
+  .card--clickable:hover {
+    transform: none;
+  }
+}

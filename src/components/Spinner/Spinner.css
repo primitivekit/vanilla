@@ -1,0 +1,110 @@
+/* PrimitiveKit Spinner Component */
+
+.spinner {
+  --spinner-size: 2rem;
+  --spinner-color: rgba(59, 130, 246, 1);
+  --spinner-border-width: 3px;
+  --spinner-speed: 0.75s;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.spinner__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Border variant */
+.spinner--border .spinner__circle {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--spinner-border-width) solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: spinner-rotate var(--spinner-speed) linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dots variant */
+.spinner--dots .spinner__dots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.spinner--dots .spinner__dot {
+  width: calc(var(--spinner-size) / 4);
+  height: calc(var(--spinner-size) / 4);
+  background-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: spinner-bounce var(--spinner-speed) ease-in-out infinite;
+}
+
+.spinner--dots .spinner__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.spinner--dots .spinner__dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.spinner--dots .spinner__dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes spinner-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Size variants */
+.spinner--small {
+  --spinner-size: 1rem;
+  --spinner-border-width: 2px;
+}
+
+.spinner--medium {
+  --spinner-size: 2rem;
+  --spinner-border-width: 3px;
+}
+
+.spinner--large {
+  --spinner-size: 3rem;
+  --spinner-border-width: 4px;
+}
+
+.spinner--xlarge {
+  --spinner-size: 4rem;
+  --spinner-border-width: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner--border .spinner__circle {
+    animation-duration: 1.5s;
+  }
+  
+  .spinner--dots .spinner__dot {
+    animation: none;
+    opacity: 0.5;
+  }
+}

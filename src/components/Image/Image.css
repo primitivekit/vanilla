@@ -1,0 +1,202 @@
+.image {
+  /* Container */
+  display: var(--image-display, inline-block);
+  position: var(--image-position, relative);
+  overflow: var(--image-overflow, hidden);
+  border-radius: var(--image-border-radius, 0);
+  background: var(--image-background, transparent);
+  
+  /* Animation */
+  transition: opacity var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease),
+              transform var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease);
+}
+
+/* Image */
+.image__img {
+  width: var(--image-width, 100%);
+  height: var(--image-height, auto);
+  object-fit: var(--image-object-fit, cover);
+  object-position: var(--image-object-position, center);
+  opacity: var(--image-opacity, 1);
+  filter: var(--image-filter, none);
+  display: block;
+  transition: opacity var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease),
+              filter var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease),
+              transform var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease);
+}
+
+/* Placeholder */
+.image__placeholder {
+  background: var(--image-placeholder-background, rgba(0, 0, 0, 0.05));
+  color: var(--image-placeholder-color, rgba(0, 0, 0, 0.25));
+  display: var(--image-placeholder-display, flex);
+  align-items: var(--image-placeholder-align-items, center);
+  justify-content: var(--image-placeholder-justify-content, center);
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+}
+
+.image__placeholder-default {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.05) 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: imagePlaceholderShimmer 1.5s infinite;
+}
+
+@keyframes imagePlaceholderShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Fallback */
+.image__fallback {
+  background: var(--image-fallback-background, rgba(0, 0, 0, 0.05));
+  color: var(--image-fallback-color, rgba(0, 0, 0, 0.25));
+  font-size: var(--image-fallback-font-size, 0.875rem);
+  display: var(--image-fallback-display, flex);
+  align-items: var(--image-fallback-align-items, center);
+  justify-content: var(--image-fallback-justify-content, center);
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+}
+
+/* Preview */
+.image--preview {
+  cursor: pointer;
+}
+
+.image--preview:hover .image__img {
+  opacity: var(--image-hover-opacity, 0.8);
+  transform: var(--image-hover-transform, scale(1.05));
+}
+
+.image__preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--image-preview-overlay-background, rgba(0, 0, 0, 0.5));
+  opacity: var(--image-preview-overlay-opacity, 0);
+  backdrop-filter: var(--image-preview-overlay-backdrop-filter, blur(2px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease);
+}
+
+.image--preview:hover .image__preview-overlay {
+  opacity: 1;
+}
+
+.image__preview-icon {
+  color: var(--image-preview-icon-color, rgba(255, 255, 255, 1));
+  width: var(--image-preview-icon-size, 24px);
+  height: var(--image-preview-icon-size, 24px);
+  opacity: var(--image-preview-icon-opacity, 1);
+}
+
+/* Preview Modal */
+.image__preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--image-preview-modal-background, rgba(0, 0, 0, 0.9));
+  z-index: var(--image-preview-modal-z-index, 9999);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--image-preview-modal-padding, 2rem);
+  animation: imagePreviewFadeIn var(--image-animation-duration, 0.3s) var(--image-animation-timing, ease-out);
+}
+
+.image__preview-img {
+  max-width: var(--image-preview-image-max-width, 90%);
+  max-height: var(--image-preview-image-max-height, 90%);
+  object-fit: contain;
+  animation: imagePreviewZoomIn var(--image-animation-duration, 0.3s) var(--image-animation-timing, ease-out);
+}
+
+.image__preview-close {
+  position: absolute;
+  top: var(--image-preview-close-top, 1rem);
+  right: var(--image-preview-close-right, 1rem);
+  background: transparent;
+  border: none;
+  color: var(--image-preview-close-color, rgba(255, 255, 255, 0.8));
+  width: var(--image-preview-close-size, 40px);
+  height: var(--image-preview-close-size, 40px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--image-transition-duration, 0.3s) var(--image-transition-timing, ease);
+  padding: 0;
+}
+
+.image__preview-close:hover {
+  color: var(--image-preview-close-hover-color, rgba(255, 255, 255, 1));
+}
+
+/* Loading State */
+.image--loading .image__img {
+  opacity: var(--image-loading-opacity, 0.5);
+  filter: var(--image-loading-filter, blur(4px));
+}
+
+/* Animations */
+@keyframes imagePreviewFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imagePreviewZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .image__placeholder {
+    background: var(--image-placeholder-background, rgba(255, 255, 255, 0.05));
+    color: var(--image-placeholder-color, rgba(255, 255, 255, 0.25));
+  }
+  
+  .image__placeholder-default {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.05) 75%
+    );
+  }
+  
+  .image__fallback {
+    background: var(--image-fallback-background, rgba(255, 255, 255, 0.05));
+    color: var(--image-fallback-color, rgba(255, 255, 255, 0.25));
+  }
+}

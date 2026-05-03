@@ -1,0 +1,374 @@
+/* 
+ * PrimitiveKit Popover Component
+ * Comprehensive CSS Variable System
+ */
+
+.popover-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.popover__trigger {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.popover {
+  /* Container */
+  --popover-bg-color: rgba(255, 255, 255, 1);
+  --popover-color: rgba(17, 24, 39, 1);
+  --popover-border-radius: 0.5rem;
+  --popover-border-width: 1px;
+  --popover-border-color: rgba(229, 231, 235, 1);
+  --popover-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --popover-padding-top: var(--popover-padding-y, 0);
+  --popover-padding-right: var(--popover-padding-x, 0);
+  --popover-padding-bottom: var(--popover-padding-y, 0);
+  --popover-padding-left: var(--popover-padding-x, 0);
+  --popover-padding-y: 0;
+  --popover-padding-x: 0;
+  --popover-max-width: 20rem;
+  --popover-min-width: 12rem;
+  --popover-max-height: 24rem;
+  --popover-z-index: 1000;
+  
+  /* Header */
+  --popover-header-bg-color: transparent;
+  --popover-header-color: rgba(17, 24, 39, 1);
+  --popover-header-padding-top: var(--popover-header-padding-y, 1rem);
+  --popover-header-padding-right: var(--popover-header-padding-x, 1rem);
+  --popover-header-padding-bottom: var(--popover-header-padding-y, 0.75rem);
+  --popover-header-padding-left: var(--popover-header-padding-x, 1rem);
+  --popover-header-padding-y: 1rem;
+  --popover-header-padding-x: 1rem;
+  --popover-header-border-bottom-width: 1px;
+  --popover-header-border-bottom-color: rgba(229, 231, 235, 1);
+  --popover-header-font-size: 1rem;
+  --popover-header-font-weight: 600;
+  
+  /* Body */
+  --popover-body-padding-top: var(--popover-body-padding-y, 1rem);
+  --popover-body-padding-right: var(--popover-body-padding-x, 1rem);
+  --popover-body-padding-bottom: var(--popover-body-padding-y, 1rem);
+  --popover-body-padding-left: var(--popover-body-padding-x, 1rem);
+  --popover-body-padding-y: 1rem;
+  --popover-body-padding-x: 1rem;
+  --popover-body-font-size: 0.875rem;
+  --popover-body-line-height: 1.5;
+  
+  /* Footer */
+  --popover-footer-bg-color: transparent;
+  --popover-footer-padding-top: var(--popover-footer-padding-y, 0.75rem);
+  --popover-footer-padding-right: var(--popover-footer-padding-x, 1rem);
+  --popover-footer-padding-bottom: var(--popover-footer-padding-y, 1rem);
+  --popover-footer-padding-left: var(--popover-footer-padding-x, 1rem);
+  --popover-footer-padding-y: 0.75rem;
+  --popover-footer-padding-x: 1rem;
+  --popover-footer-border-top-width: 1px;
+  --popover-footer-border-top-color: rgba(229, 231, 235, 1);
+  --popover-footer-gap: 0.5rem;
+  
+  /* Arrow */
+  --popover-arrow-size: 0.5rem;
+  --popover-arrow-color: var(--popover-bg-color);
+  --popover-arrow-border-color: var(--popover-border-color);
+  
+  /* Close Button */
+  --popover-close-size: 1.5rem;
+  --popover-close-color: rgba(107, 114, 128, 1);
+  --popover-close-color-hover: rgba(17, 24, 39, 1);
+  --popover-close-bg-color: transparent;
+  --popover-close-bg-color-hover: rgba(243, 244, 246, 1);
+  
+  /* Offset */
+  --popover-offset: 0.5rem;
+  
+  /* Animations */
+  --popover-animation-duration: 0.2s;
+  --popover-animation-timing: ease-out;
+  --popover-opacity: 1;
+  
+  /* Apply styles */
+  position: absolute;
+  background-color: var(--popover-bg-color);
+  color: var(--popover-color);
+  border-radius: var(--popover-border-radius);
+  border-width: var(--popover-border-width);
+  border-style: solid;
+  border-color: var(--popover-border-color);
+  box-shadow: var(--popover-box-shadow);
+  padding-top: var(--popover-padding-top);
+  padding-right: var(--popover-padding-right);
+  padding-bottom: var(--popover-padding-bottom);
+  padding-left: var(--popover-padding-left);
+  max-width: var(--popover-max-width);
+  min-width: var(--popover-min-width);
+  max-height: var(--popover-max-height);
+  z-index: var(--popover-z-index);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--popover-animation-duration) var(--popover-animation-timing);
+}
+
+.popover--open {
+  opacity: var(--popover-opacity);
+  pointer-events: auto;
+}
+
+/* Header */
+.popover__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--popover-header-bg-color);
+  color: var(--popover-header-color);
+  padding-top: var(--popover-header-padding-top);
+  padding-right: var(--popover-header-padding-right);
+  padding-bottom: var(--popover-header-padding-bottom);
+  padding-left: var(--popover-header-padding-left);
+  border-bottom: var(--popover-header-border-bottom-width) solid var(--popover-header-border-bottom-color);
+  font-size: var(--popover-header-font-size);
+  font-weight: var(--popover-header-font-weight);
+}
+
+.popover__header-content {
+  flex: 1;
+}
+
+/* Body */
+.popover__body {
+  padding-top: var(--popover-body-padding-top);
+  padding-right: var(--popover-body-padding-right);
+  padding-bottom: var(--popover-body-padding-bottom);
+  padding-left: var(--popover-body-padding-left);
+  font-size: var(--popover-body-font-size);
+  line-height: var(--popover-body-line-height);
+  overflow-y: auto;
+}
+
+/* Footer */
+.popover__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--popover-footer-gap);
+  background-color: var(--popover-footer-bg-color);
+  padding-top: var(--popover-footer-padding-top);
+  padding-right: var(--popover-footer-padding-right);
+  padding-bottom: var(--popover-footer-padding-bottom);
+  padding-left: var(--popover-footer-padding-left);
+  border-top: var(--popover-footer-border-top-width) solid var(--popover-footer-border-top-color);
+}
+
+/* Close Button */
+.popover__close {
+  width: var(--popover-close-size);
+  height: var(--popover-close-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--popover-close-bg-color);
+  color: var(--popover-close-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.popover__close:hover {
+  background-color: var(--popover-close-bg-color-hover);
+  color: var(--popover-close-color-hover);
+}
+
+/* Arrow */
+.popover__arrow {
+  position: absolute;
+  width: var(--popover-arrow-size);
+  height: var(--popover-arrow-size);
+  background-color: var(--popover-arrow-color);
+  border-width: var(--popover-border-width);
+  border-style: solid;
+  border-color: var(--popover-arrow-border-color);
+  transform: rotate(45deg);
+}
+
+/* Placement: Top */
+.popover--top {
+  bottom: calc(100% + var(--popover-offset));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popover--top .popover__arrow {
+  bottom: calc(var(--popover-arrow-size) / -2);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Bottom */
+.popover--bottom {
+  top: calc(100% + var(--popover-offset));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popover--bottom .popover__arrow {
+  top: calc(var(--popover-arrow-size) / -2);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Left */
+.popover--left {
+  right: calc(100% + var(--popover-offset));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover--left .popover__arrow {
+  right: calc(var(--popover-arrow-size) / -2);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Right */
+.popover--right {
+  left: calc(100% + var(--popover-offset));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover--right .popover__arrow {
+  left: calc(var(--popover-arrow-size) / -2);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Top Start */
+.popover--top-start {
+  bottom: calc(100% + var(--popover-offset));
+  left: 0;
+}
+
+.popover--top-start .popover__arrow {
+  bottom: calc(var(--popover-arrow-size) / -2);
+  left: 1rem;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Top End */
+.popover--top-end {
+  bottom: calc(100% + var(--popover-offset));
+  right: 0;
+}
+
+.popover--top-end .popover__arrow {
+  bottom: calc(var(--popover-arrow-size) / -2);
+  right: 1rem;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Bottom Start */
+.popover--bottom-start {
+  top: calc(100% + var(--popover-offset));
+  left: 0;
+}
+
+.popover--bottom-start .popover__arrow {
+  top: calc(var(--popover-arrow-size) / -2);
+  left: 1rem;
+  transform: rotate(45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Bottom End */
+.popover--bottom-end {
+  top: calc(100% + var(--popover-offset));
+  right: 0;
+}
+
+.popover--bottom-end .popover__arrow {
+  top: calc(var(--popover-arrow-size) / -2);
+  right: 1rem;
+  transform: rotate(45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Left Start */
+.popover--left-start {
+  right: calc(100% + var(--popover-offset));
+  top: 0;
+}
+
+.popover--left-start .popover__arrow {
+  right: calc(var(--popover-arrow-size) / -2);
+  top: 1rem;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Left End */
+.popover--left-end {
+  right: calc(100% + var(--popover-offset));
+  bottom: 0;
+}
+
+.popover--left-end .popover__arrow {
+  right: calc(var(--popover-arrow-size) / -2);
+  bottom: 1rem;
+  transform: rotate(45deg);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Right Start */
+.popover--right-start {
+  left: calc(100% + var(--popover-offset));
+  top: 0;
+}
+
+.popover--right-start .popover__arrow {
+  left: calc(var(--popover-arrow-size) / -2);
+  top: 1rem;
+  transform: rotate(45deg);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Right End */
+.popover--right-end {
+  left: calc(100% + var(--popover-offset));
+  bottom: 0;
+}
+
+.popover--right-end .popover__arrow {
+  left: calc(var(--popover-arrow-size) / -2);
+  bottom: 1rem;
+  transform: rotate(45deg);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .popover {
+    --popover-animation-duration: 0.01ms;
+  }
+}

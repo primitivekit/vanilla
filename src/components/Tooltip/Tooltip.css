@@ -1,0 +1,234 @@
+/* 
+ * PrimitiveKit Tooltip Component
+ * Comprehensive CSS Variable System
+ */
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tooltip {
+  /* Container */
+  --tooltip-bg-color: rgba(17, 24, 39, 1);
+  --tooltip-color: rgba(255, 255, 255, 1);
+  --tooltip-border-radius: 0.375rem;
+  --tooltip-border-width: 0;
+  --tooltip-border-color: rgba(229, 231, 235, 1);
+  --tooltip-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --tooltip-padding-top: var(--tooltip-padding-y, 0.5rem);
+  --tooltip-padding-right: var(--tooltip-padding-x, 0.75rem);
+  --tooltip-padding-bottom: var(--tooltip-padding-y, 0.5rem);
+  --tooltip-padding-left: var(--tooltip-padding-x, 0.75rem);
+  --tooltip-padding-y: 0.5rem;
+  --tooltip-padding-x: 0.75rem;
+  --tooltip-max-width: 20rem;
+  --tooltip-z-index: 1000;
+  
+  /* Typography */
+  --tooltip-font-size: 0.875rem;
+  --tooltip-font-weight: 400;
+  --tooltip-line-height: 1.5;
+  --tooltip-text-align: center;
+  
+  /* Arrow */
+  --tooltip-arrow-size: 0.5rem;
+  --tooltip-arrow-color: var(--tooltip-bg-color);
+  --tooltip-arrow-border-color: var(--tooltip-border-color);
+  
+  /* Offset */
+  --tooltip-offset: 0.5rem;
+  
+  /* Animations */
+  --tooltip-animation-duration: 0.15s;
+  --tooltip-animation-timing: ease-out;
+  --tooltip-opacity: 1;
+  
+  /* Apply styles */
+  position: absolute;
+  background-color: var(--tooltip-bg-color);
+  color: var(--tooltip-color);
+  border-radius: var(--tooltip-border-radius);
+  border-width: var(--tooltip-border-width);
+  border-style: solid;
+  border-color: var(--tooltip-border-color);
+  box-shadow: var(--tooltip-box-shadow);
+  padding-top: var(--tooltip-padding-top);
+  padding-right: var(--tooltip-padding-right);
+  padding-bottom: var(--tooltip-padding-bottom);
+  padding-left: var(--tooltip-padding-left);
+  max-width: var(--tooltip-max-width);
+  z-index: var(--tooltip-z-index);
+  font-size: var(--tooltip-font-size);
+  font-weight: var(--tooltip-font-weight);
+  line-height: var(--tooltip-line-height);
+  text-align: var(--tooltip-text-align);
+  white-space: normal;
+  word-wrap: break-word;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--tooltip-animation-duration) var(--tooltip-animation-timing);
+}
+
+.tooltip--visible {
+  opacity: var(--tooltip-opacity);
+}
+
+/* Content */
+.tooltip__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Arrow */
+.tooltip__arrow {
+  position: absolute;
+  width: var(--tooltip-arrow-size);
+  height: var(--tooltip-arrow-size);
+  background-color: var(--tooltip-arrow-color);
+  border-width: var(--tooltip-border-width);
+  border-style: solid;
+  border-color: var(--tooltip-arrow-border-color);
+  transform: rotate(45deg);
+}
+
+/* Placement: Top */
+.tooltip--top {
+  bottom: calc(100% + var(--tooltip-offset));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--top.tooltip--visible {
+  animation: tooltip-slide-down var(--tooltip-animation-duration) var(--tooltip-animation-timing);
+}
+
+.tooltip--top .tooltip__arrow {
+  bottom: calc(var(--tooltip-arrow-size) / -2);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Placement: Bottom */
+.tooltip--bottom {
+  top: calc(100% + var(--tooltip-offset));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--bottom.tooltip--visible {
+  animation: tooltip-slide-up var(--tooltip-animation-duration) var(--tooltip-animation-timing);
+}
+
+.tooltip--bottom .tooltip__arrow {
+  top: calc(var(--tooltip-arrow-size) / -2);
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Left */
+.tooltip--left {
+  right: calc(100% + var(--tooltip-offset));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--left.tooltip--visible {
+  animation: tooltip-slide-right var(--tooltip-animation-duration) var(--tooltip-animation-timing);
+}
+
+.tooltip--left .tooltip__arrow {
+  right: calc(var(--tooltip-arrow-size) / -2);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Placement: Right */
+.tooltip--right {
+  left: calc(100% + var(--tooltip-offset));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--right.tooltip--visible {
+  animation: tooltip-slide-left var(--tooltip-animation-duration) var(--tooltip-animation-timing);
+}
+
+.tooltip--right .tooltip__arrow {
+  left: calc(var(--tooltip-arrow-size) / -2);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Variant: Light */
+.tooltip--light {
+  --tooltip-bg-color: rgba(255, 255, 255, 1);
+  --tooltip-color: rgba(17, 24, 39, 1);
+  --tooltip-border-width: 1px;
+  --tooltip-border-color: rgba(229, 231, 235, 1);
+}
+
+/* Animations */
+@keyframes tooltip-slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.25rem);
+  }
+  to {
+    opacity: var(--tooltip-opacity);
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes tooltip-slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0.25rem);
+  }
+  to {
+    opacity: var(--tooltip-opacity);
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes tooltip-slide-left {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(0.25rem);
+  }
+  to {
+    opacity: var(--tooltip-opacity);
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@keyframes tooltip-slide-right {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-0.25rem);
+  }
+  to {
+    opacity: var(--tooltip-opacity);
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    --tooltip-animation-duration: 0.01ms;
+  }
+  
+  .tooltip--visible {
+    animation: none;
+  }
+}

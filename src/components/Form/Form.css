@@ -1,0 +1,149 @@
+.form {
+  /* Container */
+  gap: var(--form-gap, 0);
+  padding: var(--form-padding, 0);
+}
+
+/* Item */
+.form__item {
+  margin-bottom: var(--form-item-margin-bottom, 1.5rem);
+}
+
+.form__item:last-child {
+  margin-bottom: 0;
+}
+
+/* Label */
+.form__label {
+  display: block;
+  font-size: var(--form-label-font-size, 0.875rem);
+  font-weight: var(--form-label-font-weight, 500);
+  line-height: var(--form-label-line-height, 1.5);
+  color: var(--form-label-color, rgba(0, 0, 0, 0.85));
+  margin-bottom: var(--form-item-label-margin-bottom, 0.5rem);
+}
+
+.form__required {
+  color: var(--form-label-required-color, rgba(239, 68, 68, 1));
+  margin-left: var(--form-label-required-margin-left, 0.25rem);
+}
+
+/* Content */
+.form__content {
+  flex: 1;
+}
+
+/* Error */
+.form__error {
+  font-size: var(--form-error-font-size, 0.75rem);
+  color: var(--form-error-color, rgba(239, 68, 68, 1));
+  margin-top: var(--form-error-margin-top, 0.25rem);
+  line-height: var(--form-error-line-height, 1.5);
+  animation: formErrorSlideDown 0.3s ease;
+}
+
+@keyframes formErrorSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Help */
+.form__help {
+  font-size: var(--form-help-font-size, 0.75rem);
+  color: var(--form-help-color, rgba(0, 0, 0, 0.45));
+  margin-top: var(--form-help-margin-top, 0.25rem);
+  line-height: var(--form-help-line-height, 1.5);
+}
+
+/* Layout: Horizontal */
+.form--horizontal .form__item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.form--horizontal .form__label {
+  width: var(--form-horizontal-label-width, 120px);
+  text-align: var(--form-horizontal-label-text-align, right);
+  padding-right: var(--form-horizontal-label-padding-right, 1rem);
+  margin-bottom: 0;
+  padding-top: 0.5rem;
+}
+
+.form--horizontal .form__content {
+  flex: var(--form-horizontal-content-flex, 1);
+}
+
+/* Layout: Inline */
+.form--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form--inline .form__item {
+  display: var(--form-inline-item-display, inline-flex);
+  align-items: center;
+  margin-right: var(--form-inline-item-margin-right, 0);
+  margin-bottom: 0;
+}
+
+.form--inline .form__label {
+  margin-right: var(--form-inline-label-margin-right, 0.5rem);
+  margin-bottom: var(--form-inline-label-margin-bottom, 0);
+}
+
+/* Size: Small */
+.form--small .form__label {
+  font-size: var(--form-small-label-font-size, 0.75rem);
+}
+
+.form--small .form__error {
+  font-size: var(--form-small-error-font-size, 0.6875rem);
+}
+
+.form--small .form__help {
+  font-size: var(--form-small-help-font-size, 0.6875rem);
+}
+
+/* Size: Medium (default) */
+.form--medium .form__label {
+  font-size: var(--form-medium-label-font-size, 0.875rem);
+}
+
+.form--medium .form__error {
+  font-size: var(--form-medium-error-font-size, 0.75rem);
+}
+
+.form--medium .form__help {
+  font-size: var(--form-medium-help-font-size, 0.75rem);
+}
+
+/* Size: Large */
+.form--large .form__label {
+  font-size: var(--form-large-label-font-size, 1rem);
+}
+
+.form--large .form__error {
+  font-size: var(--form-large-error-font-size, 0.875rem);
+}
+
+.form--large .form__help {
+  font-size: var(--form-large-help-font-size, 0.875rem);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .form__label {
+    color: var(--form-label-color, rgba(255, 255, 255, 0.85));
+  }
+  
+  .form__help {
+    color: var(--form-help-color, rgba(255, 255, 255, 0.45));
+  }
+}

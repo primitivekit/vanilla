@@ -1,0 +1,203 @@
+/* 
+ * PrimitiveKit Breadcrumb Component
+ * Comprehensive CSS Variable System
+ */
+
+.breadcrumb {
+  /* Container */
+  --breadcrumb-bg-color: transparent;
+  --breadcrumb-padding-top: var(--breadcrumb-padding-y, 0.5rem);
+  --breadcrumb-padding-right: var(--breadcrumb-padding-x, 0);
+  --breadcrumb-padding-bottom: var(--breadcrumb-padding-y, 0.5rem);
+  --breadcrumb-padding-left: var(--breadcrumb-padding-x, 0);
+  --breadcrumb-padding-y: 0.5rem;
+  --breadcrumb-padding-x: 0;
+  --breadcrumb-gap: 0.5rem;
+  
+  /* Item */
+  --breadcrumb-item-color: rgba(107, 114, 128, 1);
+  --breadcrumb-item-color-hover: rgba(59, 130, 246, 1);
+  --breadcrumb-item-color-active: rgba(17, 24, 39, 1);
+  --breadcrumb-item-color-disabled: rgba(209, 213, 219, 1);
+  --breadcrumb-item-bg-color: transparent;
+  --breadcrumb-item-bg-color-hover: rgba(243, 244, 246, 1);
+  --breadcrumb-item-font-size: 0.875rem;
+  --breadcrumb-item-font-weight: 400;
+  --breadcrumb-item-font-weight-active: 500;
+  --breadcrumb-item-line-height: 1.5;
+  --breadcrumb-item-padding-top: var(--breadcrumb-item-padding-y, 0.25rem);
+  --breadcrumb-item-padding-right: var(--breadcrumb-item-padding-x, 0.5rem);
+  --breadcrumb-item-padding-bottom: var(--breadcrumb-item-padding-y, 0.25rem);
+  --breadcrumb-item-padding-left: var(--breadcrumb-item-padding-x, 0.5rem);
+  --breadcrumb-item-padding-y: 0.25rem;
+  --breadcrumb-item-padding-x: 0.5rem;
+  --breadcrumb-item-border-radius: 0.375rem;
+  --breadcrumb-item-text-decoration: none;
+  --breadcrumb-item-text-decoration-hover: underline;
+  
+  /* Separator */
+  --breadcrumb-separator-color: rgba(156, 163, 175, 1);
+  --breadcrumb-separator-size: 1em;
+  --breadcrumb-separator-margin: 0.5rem;
+  
+  /* Icon */
+  --breadcrumb-icon-size: 1em;
+  --breadcrumb-icon-margin: 0.375rem;
+  
+  /* Effects */
+  --breadcrumb-opacity-disabled: 0.5;
+  --breadcrumb-outline-color: rgba(59, 130, 246, 1);
+  --breadcrumb-outline-width: 2px;
+  --breadcrumb-outline-offset: 2px;
+  
+  /* Transitions */
+  --breadcrumb-transition-duration: 0.15s;
+  --breadcrumb-transition-timing: ease-in-out;
+  
+  /* Apply styles */
+  display: block;
+  background-color: var(--breadcrumb-bg-color);
+  padding-top: var(--breadcrumb-padding-top);
+  padding-right: var(--breadcrumb-padding-right);
+  padding-bottom: var(--breadcrumb-padding-bottom);
+  padding-left: var(--breadcrumb-padding-left);
+}
+
+/* List */
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--breadcrumb-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Item */
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--breadcrumb-gap);
+}
+
+.breadcrumb__link,
+.breadcrumb__text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--breadcrumb-icon-margin);
+  
+  color: var(--breadcrumb-item-color);
+  background-color: var(--breadcrumb-item-bg-color);
+  
+  font-size: var(--breadcrumb-item-font-size);
+  font-weight: var(--breadcrumb-item-font-weight);
+  line-height: var(--breadcrumb-item-line-height);
+  
+  padding-top: var(--breadcrumb-item-padding-top);
+  padding-right: var(--breadcrumb-item-padding-right);
+  padding-bottom: var(--breadcrumb-item-padding-bottom);
+  padding-left: var(--breadcrumb-item-padding-left);
+  
+  border-radius: var(--breadcrumb-item-border-radius);
+  text-decoration: var(--breadcrumb-item-text-decoration);
+  
+  transition-property: color, background-color, text-decoration;
+  transition-duration: var(--breadcrumb-transition-duration);
+  transition-timing-function: var(--breadcrumb-transition-timing);
+}
+
+.breadcrumb__link {
+  cursor: pointer;
+}
+
+.breadcrumb__link:hover {
+  color: var(--breadcrumb-item-color-hover);
+  background-color: var(--breadcrumb-item-bg-color-hover);
+  text-decoration: var(--breadcrumb-item-text-decoration-hover);
+}
+
+.breadcrumb__link:focus-visible {
+  outline: var(--breadcrumb-outline-width) solid var(--breadcrumb-outline-color);
+  outline-offset: var(--breadcrumb-outline-offset);
+}
+
+/* Current Item */
+.breadcrumb__item--current .breadcrumb__text {
+  color: var(--breadcrumb-item-color-active);
+  font-weight: var(--breadcrumb-item-font-weight-active);
+}
+
+/* Disabled Item */
+.breadcrumb__item--disabled .breadcrumb__text,
+.breadcrumb__item--disabled .breadcrumb__link {
+  color: var(--breadcrumb-item-color-disabled);
+  opacity: var(--breadcrumb-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon */
+.breadcrumb__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--breadcrumb-icon-size);
+  height: var(--breadcrumb-icon-size);
+  flex-shrink: 0;
+}
+
+/* Label */
+.breadcrumb__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Separator */
+.breadcrumb__separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--breadcrumb-separator-color);
+  font-size: var(--breadcrumb-separator-size);
+  width: var(--breadcrumb-separator-size);
+  height: var(--breadcrumb-separator-size);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Size Variants */
+.breadcrumb--small {
+  --breadcrumb-item-font-size: 0.8125rem;
+  --breadcrumb-item-padding-y: 0.125rem;
+  --breadcrumb-item-padding-x: 0.375rem;
+  --breadcrumb-icon-size: 0.875em;
+  --breadcrumb-separator-size: 0.875em;
+  --breadcrumb-gap: 0.375rem;
+}
+
+.breadcrumb--large {
+  --breadcrumb-item-font-size: 1rem;
+  --breadcrumb-item-padding-y: 0.375rem;
+  --breadcrumb-item-padding-x: 0.75rem;
+  --breadcrumb-icon-size: 1.25em;
+  --breadcrumb-separator-size: 1.25em;
+  --breadcrumb-gap: 0.75rem;
+}
+
+/* Separator Variants */
+.breadcrumb--separator-slash .breadcrumb__separator {
+  font-weight: 300;
+}
+
+.breadcrumb--separator-dot .breadcrumb__separator {
+  font-weight: 700;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .breadcrumb__link,
+  .breadcrumb__text {
+    transition-duration: 0.01ms;
+  }
+}

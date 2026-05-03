@@ -1,0 +1,227 @@
+/* 
+ * PrimitiveKit Dropdown Component
+ * Comprehensive CSS Variable System
+ */
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.dropdown__trigger {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.dropdown {
+  /* Container */
+  --dropdown-bg-color: rgba(255, 255, 255, 1);
+  --dropdown-border-radius: 0.5rem;
+  --dropdown-border-width: 1px;
+  --dropdown-border-color: rgba(229, 231, 235, 1);
+  --dropdown-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --dropdown-padding-top: var(--dropdown-padding-y, 0.5rem);
+  --dropdown-padding-right: var(--dropdown-padding-x, 0);
+  --dropdown-padding-bottom: var(--dropdown-padding-y, 0.5rem);
+  --dropdown-padding-left: var(--dropdown-padding-x, 0);
+  --dropdown-padding-y: 0.5rem;
+  --dropdown-padding-x: 0;
+  --dropdown-max-width: 20rem;
+  --dropdown-min-width: 12rem;
+  --dropdown-max-height: 24rem;
+  --dropdown-z-index: 1000;
+  
+  /* Item */
+  --dropdown-item-color: rgba(55, 65, 81, 1);
+  --dropdown-item-color-hover: rgba(17, 24, 39, 1);
+  --dropdown-item-color-active: rgba(59, 130, 246, 1);
+  --dropdown-item-color-disabled: rgba(209, 213, 219, 1);
+  --dropdown-item-bg-color: transparent;
+  --dropdown-item-bg-color-hover: rgba(243, 244, 246, 1);
+  --dropdown-item-bg-color-active: rgba(239, 246, 255, 1);
+  --dropdown-item-padding-top: var(--dropdown-item-padding-y, 0.625rem);
+  --dropdown-item-padding-right: var(--dropdown-item-padding-x, 1rem);
+  --dropdown-item-padding-bottom: var(--dropdown-item-padding-y, 0.625rem);
+  --dropdown-item-padding-left: var(--dropdown-item-padding-x, 1rem);
+  --dropdown-item-padding-y: 0.625rem;
+  --dropdown-item-padding-x: 1rem;
+  --dropdown-item-border-radius: 0.375rem;
+  --dropdown-item-font-size: 0.875rem;
+  --dropdown-item-font-weight: 400;
+  --dropdown-item-line-height: 1.5;
+  --dropdown-item-gap: 0.75rem;
+  
+  /* Divider */
+  --dropdown-divider-color: rgba(229, 231, 235, 1);
+  --dropdown-divider-height: 1px;
+  --dropdown-divider-margin-y: 0.5rem;
+  
+  /* Icon */
+  --dropdown-icon-size: 1.25em;
+  
+  /* Offset */
+  --dropdown-offset: 0.5rem;
+  
+  /* Animations */
+  --dropdown-animation-duration: 0.15s;
+  --dropdown-animation-timing: ease-out;
+  --dropdown-opacity: 1;
+  --dropdown-opacity-disabled: 0.5;
+  
+  /* Apply styles */
+  position: absolute;
+  background-color: var(--dropdown-bg-color);
+  border-radius: var(--dropdown-border-radius);
+  border-width: var(--dropdown-border-width);
+  border-style: solid;
+  border-color: var(--dropdown-border-color);
+  box-shadow: var(--dropdown-box-shadow);
+  padding-top: var(--dropdown-padding-top);
+  padding-right: var(--dropdown-padding-right);
+  padding-bottom: var(--dropdown-padding-bottom);
+  padding-left: var(--dropdown-padding-left);
+  max-width: var(--dropdown-max-width);
+  min-width: var(--dropdown-min-width);
+  max-height: var(--dropdown-max-height);
+  z-index: var(--dropdown-z-index);
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dropdown-animation-duration) var(--dropdown-animation-timing);
+}
+
+.dropdown--open {
+  opacity: var(--dropdown-opacity);
+  pointer-events: auto;
+}
+
+/* Item */
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--dropdown-item-gap);
+  width: 100%;
+  text-align: left;
+  
+  color: var(--dropdown-item-color);
+  background-color: var(--dropdown-item-bg-color);
+  
+  padding-top: var(--dropdown-item-padding-top);
+  padding-right: var(--dropdown-item-padding-right);
+  padding-bottom: var(--dropdown-item-padding-bottom);
+  padding-left: var(--dropdown-item-padding-left);
+  
+  border: none;
+  border-radius: var(--dropdown-item-border-radius);
+  
+  font-size: var(--dropdown-item-font-size);
+  font-weight: var(--dropdown-item-font-weight);
+  line-height: var(--dropdown-item-line-height);
+  font-family: inherit;
+  
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown__item:hover:not(.dropdown__item--disabled) {
+  color: var(--dropdown-item-color-hover);
+  background-color: var(--dropdown-item-bg-color-hover);
+}
+
+.dropdown__item:active:not(.dropdown__item--disabled) {
+  color: var(--dropdown-item-color-active);
+  background-color: var(--dropdown-item-bg-color-active);
+}
+
+.dropdown__item:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 1);
+  outline-offset: -2px;
+}
+
+.dropdown__item--disabled {
+  color: var(--dropdown-item-color-disabled);
+  opacity: var(--dropdown-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Item Icon */
+.dropdown__item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--dropdown-icon-size);
+  height: var(--dropdown-icon-size);
+  flex-shrink: 0;
+}
+
+/* Item Label */
+.dropdown__item-label {
+  flex: 1;
+}
+
+/* Divider */
+.dropdown__divider {
+  height: var(--dropdown-divider-height);
+  background-color: var(--dropdown-divider-color);
+  margin-top: var(--dropdown-divider-margin-y);
+  margin-bottom: var(--dropdown-divider-margin-y);
+}
+
+/* Placement: Bottom Start */
+.dropdown--bottom-start {
+  top: calc(100% + var(--dropdown-offset));
+  left: 0;
+}
+
+/* Placement: Bottom End */
+.dropdown--bottom-end {
+  top: calc(100% + var(--dropdown-offset));
+  right: 0;
+}
+
+/* Placement: Top Start */
+.dropdown--top-start {
+  bottom: calc(100% + var(--dropdown-offset));
+  left: 0;
+}
+
+/* Placement: Top End */
+.dropdown--top-end {
+  bottom: calc(100% + var(--dropdown-offset));
+  right: 0;
+}
+
+/* Placement: Left Start */
+.dropdown--left-start {
+  right: calc(100% + var(--dropdown-offset));
+  top: 0;
+}
+
+/* Placement: Left End */
+.dropdown--left-end {
+  right: calc(100% + var(--dropdown-offset));
+  bottom: 0;
+}
+
+/* Placement: Right Start */
+.dropdown--right-start {
+  left: calc(100% + var(--dropdown-offset));
+  top: 0;
+}
+
+/* Placement: Right End */
+.dropdown--right-end {
+  left: calc(100% + var(--dropdown-offset));
+  bottom: 0;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .dropdown {
+    --dropdown-animation-duration: 0.01ms;
+  }
+}

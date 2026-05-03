@@ -1,0 +1,245 @@
+.table {
+  /* Container */
+  position: relative;
+  border-width: var(--table-border-width, 1px);
+  border-style: var(--table-border-style, solid);
+  border-color: var(--table-border-color, rgba(0, 0, 0, 0.1));
+  border-radius: var(--table-border-radius, 4px);
+  background: var(--table-background, rgba(255, 255, 255, 1));
+  overflow: hidden;
+}
+
+.table__container {
+  overflow-x: auto;
+}
+
+.table__element {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Header */
+.table__header {
+  background: var(--table-header-background, rgba(0, 0, 0, 0.02));
+}
+
+.table__header-cell {
+  padding: var(--table-header-padding, 1rem);
+  color: var(--table-header-color, rgba(0, 0, 0, 0.85));
+  font-weight: var(--table-header-font-weight, 600);
+  text-align: left;
+  border-bottom-width: var(--table-header-border-bottom-width, 2px);
+  border-bottom-style: solid;
+  border-bottom-color: var(--table-header-border-bottom-color, rgba(0, 0, 0, 0.1));
+  white-space: nowrap;
+}
+
+.table__header-cell--sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--table-transition-duration, 0.3s) var(--table-transition-timing, ease);
+}
+
+.table__header-cell--sortable:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.table__header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Sort Icon */
+.table__sort-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: var(--table-sort-icon-color, rgba(0, 0, 0, 0.25));
+}
+
+.table__sort-icon svg {
+  width: var(--table-sort-icon-size, 12px);
+  height: var(--table-sort-icon-size, 12px);
+  transition: color var(--table-transition-duration, 0.3s) var(--table-transition-timing, ease);
+}
+
+.table__sort-icon svg.active {
+  color: var(--table-sort-icon-active-color, rgba(59, 130, 246, 1));
+}
+
+/* Body */
+.table__body {
+  background: var(--table-body-background, rgba(255, 255, 255, 1));
+}
+
+.table__row {
+  transition: background var(--table-transition-duration, 0.3s) var(--table-transition-timing, ease);
+}
+
+.table--hoverable .table__row:hover {
+  background: var(--table-row-hover-background, rgba(0, 0, 0, 0.02));
+}
+
+.table--striped .table__row:nth-child(even) {
+  background: var(--table-row-striped-background, rgba(0, 0, 0, 0.01));
+}
+
+.table--striped.table--hoverable .table__row:nth-child(even):hover {
+  background: var(--table-row-hover-background, rgba(0, 0, 0, 0.02));
+}
+
+/* Cell */
+.table__cell {
+  padding: var(--table-cell-padding, 1rem);
+  color: var(--table-body-color, rgba(0, 0, 0, 0.85));
+  border-bottom-width: var(--table-cell-border-width, 1px);
+  border-bottom-style: solid;
+  border-bottom-color: var(--table-cell-border-color, rgba(0, 0, 0, 0.06));
+}
+
+.table__row:last-child .table__cell {
+  border-bottom: none;
+}
+
+/* Bordered */
+.table--bordered .table__header-cell,
+.table--bordered .table__cell {
+  border-right-width: var(--table-cell-border-width, 1px);
+  border-right-style: solid;
+  border-right-color: var(--table-cell-border-color, rgba(0, 0, 0, 0.06));
+}
+
+.table--bordered .table__header-cell:last-child,
+.table--bordered .table__cell:last-child {
+  border-right: none;
+}
+
+/* Empty */
+.table__empty {
+  padding: var(--table-empty-padding, 3rem 1rem);
+  text-align: center;
+  color: var(--table-empty-color, rgba(0, 0, 0, 0.45));
+  font-size: var(--table-empty-font-size, 0.875rem);
+}
+
+/* Loading */
+.table__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--table-loading-background, rgba(255, 255, 255, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: var(--table-loading-opacity, 1);
+}
+
+.table__loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: rgba(59, 130, 246, 1);
+  border-radius: 50%;
+  animation: tableSpin 0.8s linear infinite;
+}
+
+@keyframes tableSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Size: Small */
+.table--small .table__header-cell {
+  padding: var(--table-small-header-padding, 0.5rem);
+}
+
+.table--small .table__cell {
+  padding: var(--table-small-cell-padding, 0.5rem);
+}
+
+/* Size: Medium (default) */
+.table--medium .table__header-cell {
+  padding: var(--table-medium-header-padding, 1rem);
+}
+
+.table--medium .table__cell {
+  padding: var(--table-medium-cell-padding, 1rem);
+}
+
+/* Size: Large */
+.table--large .table__header-cell {
+  padding: var(--table-large-header-padding, 1.5rem);
+}
+
+.table--large .table__cell {
+  padding: var(--table-large-cell-padding, 1.5rem);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .table {
+    border-color: var(--table-border-color, rgba(255, 255, 255, 0.1));
+    background: var(--table-background, rgba(0, 0, 0, 1));
+  }
+  
+  .table__header {
+    background: var(--table-header-background, rgba(255, 255, 255, 0.02));
+  }
+  
+  .table__header-cell {
+    color: var(--table-header-color, rgba(255, 255, 255, 0.85));
+    border-bottom-color: var(--table-header-border-bottom-color, rgba(255, 255, 255, 0.1));
+  }
+  
+  .table__header-cell--sortable:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .table__sort-icon {
+    color: var(--table-sort-icon-color, rgba(255, 255, 255, 0.25));
+  }
+  
+  .table__body {
+    background: var(--table-body-background, rgba(0, 0, 0, 1));
+  }
+  
+  .table--hoverable .table__row:hover {
+    background: var(--table-row-hover-background, rgba(255, 255, 255, 0.02));
+  }
+  
+  .table--striped .table__row:nth-child(even) {
+    background: var(--table-row-striped-background, rgba(255, 255, 255, 0.01));
+  }
+  
+  .table--striped.table--hoverable .table__row:nth-child(even):hover {
+    background: var(--table-row-hover-background, rgba(255, 255, 255, 0.02));
+  }
+  
+  .table__cell {
+    color: var(--table-body-color, rgba(255, 255, 255, 0.85));
+    border-bottom-color: var(--table-cell-border-color, rgba(255, 255, 255, 0.06));
+  }
+  
+  .table--bordered .table__header-cell,
+  .table--bordered .table__cell {
+    border-right-color: var(--table-cell-border-color, rgba(255, 255, 255, 0.06));
+  }
+  
+  .table__empty {
+    color: var(--table-empty-color, rgba(255, 255, 255, 0.45));
+  }
+  
+  .table__loading {
+    background: var(--table-loading-background, rgba(0, 0, 0, 0.8));
+  }
+  
+  .table__loading-spinner {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-top-color: rgba(59, 130, 246, 1);
+  }
+}

@@ -1,0 +1,188 @@
+/* PrimitiveKit Alert Component */
+
+.alert {
+  --alert-padding: 1rem;
+  --alert-border-radius: 0.375rem;
+  --alert-border-width: 1px;
+  
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: var(--alert-padding);
+  border-radius: var(--alert-border-radius);
+  position: relative;
+}
+
+.alert__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--alert-icon-color);
+}
+
+.alert__content {
+  flex: 1;
+}
+
+.alert__title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--alert-text-color);
+}
+
+.alert__description {
+  font-size: 0.875rem;
+  color: var(--alert-text-color);
+}
+
+.alert__close {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--alert-text-color);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.alert__close:hover {
+  opacity: 1;
+}
+
+/* Info - Solid */
+.alert--solid.alert--info {
+  --alert-bg-color: rgba(59, 130, 246, 1);
+  --alert-text-color: rgba(255, 255, 255, 1);
+  --alert-icon-color: rgba(255, 255, 255, 1);
+  background-color: var(--alert-bg-color);
+}
+
+/* Info - Subtle */
+.alert--subtle.alert--info {
+  --alert-bg-color: rgba(59, 130, 246, 0.1);
+  --alert-text-color: rgba(30, 64, 175, 1);
+  --alert-icon-color: rgba(59, 130, 246, 1);
+  background-color: var(--alert-bg-color);
+}
+
+/* Info - Left Accent */
+.alert--left-accent.alert--info {
+  --alert-bg-color: rgba(59, 130, 246, 0.05);
+  --alert-text-color: rgba(30, 64, 175, 1);
+  --alert-icon-color: rgba(59, 130, 246, 1);
+  --alert-border-color: rgba(59, 130, 246, 1);
+  background-color: var(--alert-bg-color);
+  border-left: 4px solid var(--alert-border-color);
+}
+
+/* Info - Top Accent */
+.alert--top-accent.alert--info {
+  --alert-bg-color: rgba(59, 130, 246, 0.05);
+  --alert-text-color: rgba(30, 64, 175, 1);
+  --alert-icon-color: rgba(59, 130, 246, 1);
+  --alert-border-color: rgba(59, 130, 246, 1);
+  background-color: var(--alert-bg-color);
+  border-top: 4px solid var(--alert-border-color);
+}
+
+/* Success */
+.alert--solid.alert--success {
+  --alert-bg-color: rgba(16, 185, 129, 1);
+  --alert-text-color: rgba(255, 255, 255, 1);
+  --alert-icon-color: rgba(255, 255, 255, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--subtle.alert--success {
+  --alert-bg-color: rgba(16, 185, 129, 0.1);
+  --alert-text-color: rgba(6, 95, 70, 1);
+  --alert-icon-color: rgba(16, 185, 129, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--left-accent.alert--success {
+  --alert-bg-color: rgba(16, 185, 129, 0.05);
+  --alert-text-color: rgba(6, 95, 70, 1);
+  --alert-icon-color: rgba(16, 185, 129, 1);
+  --alert-border-color: rgba(16, 185, 129, 1);
+  background-color: var(--alert-bg-color);
+  border-left: 4px solid var(--alert-border-color);
+}
+
+.alert--top-accent.alert--success {
+  --alert-bg-color: rgba(16, 185, 129, 0.05);
+  --alert-text-color: rgba(6, 95, 70, 1);
+  --alert-icon-color: rgba(16, 185, 129, 1);
+  --alert-border-color: rgba(16, 185, 129, 1);
+  background-color: var(--alert-bg-color);
+  border-top: 4px solid var(--alert-border-color);
+}
+
+/* Warning */
+.alert--solid.alert--warning {
+  --alert-bg-color: rgba(245, 158, 11, 1);
+  --alert-text-color: rgba(255, 255, 255, 1);
+  --alert-icon-color: rgba(255, 255, 255, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--subtle.alert--warning {
+  --alert-bg-color: rgba(245, 158, 11, 0.1);
+  --alert-text-color: rgba(146, 64, 14, 1);
+  --alert-icon-color: rgba(245, 158, 11, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--left-accent.alert--warning {
+  --alert-bg-color: rgba(245, 158, 11, 0.05);
+  --alert-text-color: rgba(146, 64, 14, 1);
+  --alert-icon-color: rgba(245, 158, 11, 1);
+  --alert-border-color: rgba(245, 158, 11, 1);
+  background-color: var(--alert-bg-color);
+  border-left: 4px solid var(--alert-border-color);
+}
+
+.alert--top-accent.alert--warning {
+  --alert-bg-color: rgba(245, 158, 11, 0.05);
+  --alert-text-color: rgba(146, 64, 14, 1);
+  --alert-icon-color: rgba(245, 158, 11, 1);
+  --alert-border-color: rgba(245, 158, 11, 1);
+  background-color: var(--alert-bg-color);
+  border-top: 4px solid var(--alert-border-color);
+}
+
+/* Error */
+.alert--solid.alert--error {
+  --alert-bg-color: rgba(239, 68, 68, 1);
+  --alert-text-color: rgba(255, 255, 255, 1);
+  --alert-icon-color: rgba(255, 255, 255, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--subtle.alert--error {
+  --alert-bg-color: rgba(239, 68, 68, 0.1);
+  --alert-text-color: rgba(153, 27, 27, 1);
+  --alert-icon-color: rgba(239, 68, 68, 1);
+  background-color: var(--alert-bg-color);
+}
+
+.alert--left-accent.alert--error {
+  --alert-bg-color: rgba(239, 68, 68, 0.05);
+  --alert-text-color: rgba(153, 27, 27, 1);
+  --alert-icon-color: rgba(239, 68, 68, 1);
+  --alert-border-color: rgba(239, 68, 68, 1);
+  background-color: var(--alert-bg-color);
+  border-left: 4px solid var(--alert-border-color);
+}
+
+.alert--top-accent.alert--error {
+  --alert-bg-color: rgba(239, 68, 68, 0.05);
+  --alert-text-color: rgba(153, 27, 27, 1);
+  --alert-icon-color: rgba(239, 68, 68, 1);
+  --alert-border-color: rgba(239, 68, 68, 1);
+  background-color: var(--alert-bg-color);
+  border-top: 4px solid var(--alert-border-color);
+}

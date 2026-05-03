@@ -1,0 +1,312 @@
+/* 
+ * PrimitiveKit Tabs Component
+ * Comprehensive CSS Variable System
+ */
+
+.tabs {
+  /* Container */
+  --tabs-bg-color: transparent;
+  --tabs-border-color: rgba(229, 231, 235, 1);
+  --tabs-border-width: 0;
+  --tabs-border-radius: 0.5rem;
+  --tabs-padding: 0;
+  --tabs-gap: 0;
+  
+  /* Tab List */
+  --tabs-list-bg-color: transparent;
+  --tabs-list-border-color: rgba(229, 231, 235, 1);
+  --tabs-list-border-width: 0;
+  --tabs-list-padding: 0;
+  --tabs-list-gap: 0.5rem;
+  
+  /* Tab Button */
+  --tab-bg-color: transparent;
+  --tab-bg-color-hover: rgba(243, 244, 246, 1);
+  --tab-bg-color-active: transparent;
+  --tab-bg-color-disabled: transparent;
+  --tab-color: rgba(107, 114, 128, 1);
+  --tab-color-hover: rgba(17, 24, 39, 1);
+  --tab-color-active: rgba(59, 130, 246, 1);
+  --tab-color-disabled: rgba(209, 213, 219, 1);
+  --tab-border-color: transparent;
+  --tab-border-color-hover: transparent;
+  --tab-border-color-active: rgba(59, 130, 246, 1);
+  --tab-border-width: 2px;
+  --tab-border-radius: 0.375rem;
+  --tab-padding-top: var(--tab-padding-y, 0.625rem);
+  --tab-padding-right: var(--tab-padding-x, 1rem);
+  --tab-padding-bottom: var(--tab-padding-y, 0.625rem);
+  --tab-padding-left: var(--tab-padding-x, 1rem);
+  --tab-padding-y: 0.625rem;
+  --tab-padding-x: 1rem;
+  --tab-font-size: 0.875rem;
+  --tab-font-weight: 500;
+  --tab-font-weight-active: 600;
+  --tab-line-height: 1.5;
+  --tab-min-width: auto;
+  --tab-min-height: 2.5rem;
+  
+  /* Tab Indicator */
+  --tab-indicator-color: rgba(59, 130, 246, 1);
+  --tab-indicator-height: 2px;
+  --tab-indicator-width: 100%;
+  --tab-indicator-radius: 2px;
+  
+  /* Tab Panel */
+  --tab-panel-bg-color: transparent;
+  --tab-panel-color: rgba(17, 24, 39, 1);
+  --tab-panel-padding-top: var(--tab-panel-padding-y, 1rem);
+  --tab-panel-padding-right: var(--tab-panel-padding-x, 0);
+  --tab-panel-padding-bottom: var(--tab-panel-padding-y, 1rem);
+  --tab-panel-padding-left: var(--tab-panel-padding-x, 0);
+  --tab-panel-padding-y: 1rem;
+  --tab-panel-padding-x: 0;
+  
+  /* Effects */
+  --tab-box-shadow: none;
+  --tab-box-shadow-hover: none;
+  --tab-box-shadow-active: none;
+  --tab-outline-color: rgba(59, 130, 246, 1);
+  --tab-outline-width: 2px;
+  --tab-outline-offset: 2px;
+  --tab-opacity-disabled: 0.5;
+  
+  /* Transitions */
+  --tab-transition-duration: 0.2s;
+  --tab-transition-timing: ease-in-out;
+  
+  /* Icon */
+  --tab-icon-size: 1.25em;
+  --tab-icon-margin: 0.5rem;
+  
+  /* Apply styles */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--tabs-bg-color);
+  border-width: var(--tabs-border-width);
+  border-style: solid;
+  border-color: var(--tabs-border-color);
+  border-radius: var(--tabs-border-radius);
+  padding: var(--tabs-padding);
+  gap: var(--tabs-gap);
+}
+
+/* Horizontal Orientation */
+.tabs--horizontal {
+  flex-direction: column;
+}
+
+.tabs--horizontal .tabs__list {
+  flex-direction: row;
+}
+
+/* Vertical Orientation */
+.tabs--vertical {
+  flex-direction: row;
+}
+
+.tabs--vertical .tabs__list {
+  flex-direction: column;
+}
+
+/* Tab List */
+.tabs__list {
+  display: flex;
+  background-color: var(--tabs-list-bg-color);
+  border-width: var(--tabs-list-border-width);
+  border-style: solid;
+  border-color: var(--tabs-list-border-color);
+  padding: var(--tabs-list-padding);
+  gap: var(--tabs-list-gap);
+  position: relative;
+}
+
+/* Tab Button */
+.tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tab-icon-margin);
+  position: relative;
+  
+  background-color: var(--tab-bg-color);
+  color: var(--tab-color);
+  
+  padding-top: var(--tab-padding-top);
+  padding-right: var(--tab-padding-right);
+  padding-bottom: var(--tab-padding-bottom);
+  padding-left: var(--tab-padding-left);
+  
+  border: none;
+  border-radius: var(--tab-border-radius);
+  
+  font-size: var(--tab-font-size);
+  font-weight: var(--tab-font-weight);
+  line-height: var(--tab-line-height);
+  font-family: inherit;
+  
+  min-width: var(--tab-min-width);
+  min-height: var(--tab-min-height);
+  
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  
+  box-shadow: var(--tab-box-shadow);
+  
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: var(--tab-transition-duration);
+  transition-timing-function: var(--tab-transition-timing);
+}
+
+.tabs__tab:hover:not(.tabs__tab--disabled) {
+  background-color: var(--tab-bg-color-hover);
+  color: var(--tab-color-hover);
+  box-shadow: var(--tab-box-shadow-hover);
+}
+
+.tabs__tab--active {
+  background-color: var(--tab-bg-color-active);
+  color: var(--tab-color-active);
+  font-weight: var(--tab-font-weight-active);
+  box-shadow: var(--tab-box-shadow-active);
+}
+
+.tabs__tab:focus-visible {
+  outline: var(--tab-outline-width) solid var(--tab-outline-color);
+  outline-offset: var(--tab-outline-offset);
+}
+
+.tabs__tab--disabled {
+  color: var(--tab-color-disabled);
+  background-color: var(--tab-bg-color-disabled);
+  cursor: not-allowed;
+  opacity: var(--tab-opacity-disabled);
+}
+
+/* Tab Icon */
+.tabs__tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tab-icon-size);
+  height: var(--tab-icon-size);
+  flex-shrink: 0;
+}
+
+/* Tab Label */
+.tabs__tab-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Tab Panel */
+.tabs__panel {
+  background-color: var(--tab-panel-bg-color);
+  color: var(--tab-panel-color);
+  padding-top: var(--tab-panel-padding-top);
+  padding-right: var(--tab-panel-padding-right);
+  padding-bottom: var(--tab-panel-padding-bottom);
+  padding-left: var(--tab-panel-padding-left);
+}
+
+.tabs__panel[hidden] {
+  display: none;
+}
+
+/* Size Variants */
+.tabs--small {
+  --tab-padding-y: 0.5rem;
+  --tab-padding-x: 0.75rem;
+  --tab-font-size: 0.8125rem;
+  --tab-min-height: 2rem;
+  --tab-icon-size: 1em;
+}
+
+.tabs--large {
+  --tab-padding-y: 0.75rem;
+  --tab-padding-x: 1.5rem;
+  --tab-font-size: 1rem;
+  --tab-min-height: 3rem;
+  --tab-icon-size: 1.5em;
+}
+
+/* Full Width */
+.tabs--full-width .tabs__tab {
+  flex: 1;
+}
+
+/* Variant: Line (default) */
+.tabs--line .tabs__list {
+  border-bottom: 2px solid var(--tabs-list-border-color);
+}
+
+.tabs--line.tabs--vertical .tabs__list {
+  border-bottom: none;
+  border-right: 2px solid var(--tabs-list-border-color);
+}
+
+.tabs--line .tabs__tab {
+  border-radius: 0;
+  margin-bottom: -2px;
+}
+
+.tabs--line.tabs--vertical .tabs__tab {
+  margin-bottom: 0;
+  margin-right: -2px;
+}
+
+.tabs--line .tabs__tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--tab-indicator-height);
+  background-color: var(--tab-indicator-color);
+  border-radius: var(--tab-indicator-radius);
+}
+
+.tabs--line.tabs--vertical .tabs__tab--active::after {
+  bottom: auto;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: var(--tab-indicator-height);
+  height: 100%;
+}
+
+/* Variant: Enclosed */
+.tabs--enclosed .tabs__list {
+  gap: 0.25rem;
+}
+
+.tabs--enclosed .tabs__tab {
+  border: 1px solid transparent;
+}
+
+.tabs--enclosed .tabs__tab--active {
+  border-color: var(--tabs-list-border-color);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Variant: Soft */
+.tabs--soft .tabs__tab {
+  --tab-bg-color-hover: rgba(239, 246, 255, 1);
+  --tab-bg-color-active: rgba(219, 234, 254, 1);
+}
+
+/* Variant: Solid */
+.tabs--solid .tabs__tab {
+  --tab-bg-color: rgba(243, 244, 246, 1);
+  --tab-bg-color-hover: rgba(229, 231, 235, 1);
+  --tab-bg-color-active: rgba(59, 130, 246, 1);
+  --tab-color-active: rgba(255, 255, 255, 1);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tabs__tab {
+    --tab-transition-duration: 0.01ms;
+  }
+}
